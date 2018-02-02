@@ -364,8 +364,8 @@ class FromMacBetaArchiveFirefox(BaseTest):
         'pub/firefox/candidates/59.0b5-candidates/build1/mac/en-US/firefox-59.0b5.json': {
             "as": "$(CC)",
             "buildid": "20180128191456",
-            "cc": "/builds/worker/workspace/build/src/clang/bin/clang -target x86_64-apple-darwin11 -B /builds/worker/workspace/build/src/cctools/bin -isysroot /builds/worker/workspace/build/src/MacOSX10.11.sdk -std=gnu99",
-            "cxx": "/builds/worker/workspace/build/src/clang/bin/clang++ -target x86_64-apple-darwin11 -B /builds/worker/workspace/build/src/cctools/bin -isysroot /builds/worker/workspace/build/src/MacOSX10.11.sdk -std=gnu++14",
+            "cc": "/builds/worker/workspace/build/src/clang/bin/clang -target x86_64-ap",
+            "cxx": "/builds/worker/workspace/build/src/clang/bin/clang++ -target x86_64",
             "host_alias": "x86_64-pc-linux-gnu",
             "host_cpu": "x86_64",
             "host_os": "linux-gnu",
@@ -385,6 +385,7 @@ class FromMacBetaArchiveFirefox(BaseTest):
             "target_vendor": "apple"
         }
     }
+
     async def test_from_mac_beta_archive(self):
         event = fake_event('pub/firefox/releases/59.0b5/mac/en-US/Firefox 59.0b5.dmg')
         await lambda_s3_event.main(self.loop, event)
@@ -407,7 +408,8 @@ class FromMacBetaArchiveFirefox(BaseTest):
                     'channel': 'beta'
                 },
                 'download': {
-                    'url': 'https://archive.mozilla.org/pub/firefox/releases/59.0b5/mac/en-US/Firefox 59.0b5.dmg',
+                    'url': 'https://archive.mozilla.org/pub/firefox/releases/59.0b5/mac/'
+                           'en-US/Firefox 59.0b5.dmg',
                     'mimetype': 'application/x-apple-diskimage',
                     'size': 51001024,
                     'date': '2017-08-08T17:06:52Z'
@@ -417,8 +419,8 @@ class FromMacBetaArchiveFirefox(BaseTest):
                     'id': '20180128191456',
                     'date': '2018-01-28T19:14:56Z',
                     'as': '$(CC)',
-                    'cc': '/builds/worker/workspace/build/src/clang/bin/clang -target x86_64-apple-darwin11 -B /builds/worker/workspace/build/src/cctools/bin -isysroot /builds/worker/workspace/build/src/MacOSX10.11.sdk -std=gnu99',
-                    'cxx': '/builds/worker/workspace/build/src/clang/bin/clang++ -target x86_64-apple-darwin11 -B /builds/worker/workspace/build/src/cctools/bin -isysroot /builds/worker/workspace/build/src/MacOSX10.11.sdk -std=gnu++14',
+                    'cc': '/builds/worker/workspace/build/src/clang/bin/clang -target x86_64-ap',
+                    'cxx': '/builds/worker/workspace/build/src/clang/bin/clang++ -target x86_64',
                     'host': 'x86_64-pc-linux-gnu',
                     'target': 'x86_64-apple-darwin',
                     'number': 1
